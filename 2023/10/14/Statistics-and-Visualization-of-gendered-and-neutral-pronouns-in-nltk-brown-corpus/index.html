@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Statistics and Visualization of gendered and neutral pronouns in nltk brown corpus government Pronoun Counts and Percentages: Male Count: 350, Male Percentage: 59.22% Female Count: 4, Female Percentag">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Statistics and Visualization of gendered and neutral pronouns in nltk brown corpus">
+<meta property="og:url" content="http://example.com/2023/10/14/Statistics-and-Visualization-of-gendered-and-neutral-pronouns-in-nltk-brown-corpus/index.html">
+<meta property="og:site_name" content="CinanaPan">
+<meta property="og:description" content="Statistics and Visualization of gendered and neutral pronouns in nltk brown corpus government Pronoun Counts and Percentages: Male Count: 350, Male Percentage: 59.22% Female Count: 4, Female Percentag">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-10-15T02:47:05.160Z">
+<meta property="article:modified_time" content="2024-01-17T03:24:40.917Z">
+<meta property="article:author" content="Cinana Pan">
+<meta property="article:tag" content="NLP, Translation">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="NLP, Translation">
+
+
+<title >Statistics and Visualization of gendered and neutral pronouns in nltk brown corpus</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.4' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.4' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"Cinana Pan","root":"/","typed_text":null,"theme_version":"2.1.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-01-16 22:24:40"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.4" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            Async<span>Pan</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Statistics and Visualization of gendered and neutral pronouns in nltk brown corpus
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2023
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Cinana
+    </h5>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:cinnamonchoc@icloud.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/14
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            22:47
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            Cinana Pan
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="Statistics-and-Visualization-of-gendered-and-neutral-pronouns-in-nltk-brown-corpus"><a href="#Statistics-and-Visualization-of-gendered-and-neutral-pronouns-in-nltk-brown-corpus" class="headerlink" title="Statistics and Visualization of gendered and neutral pronouns in nltk brown corpus"></a>Statistics and Visualization of gendered and neutral pronouns in nltk brown corpus</h2><ol>
+<li>government Pronoun Counts and Percentages: Male Count: 350, Male Percentage: 59.22% Female Count: 4, Female Percentage: 0.68% Neutral Count: 237, Neutral Percentage: 40.10% </li>
+<li>hobbies Pronoun Counts and Percentages: Male Count: 517, Male Percentage: 54.54% Female Count: 47, Female Percentage: 4.96% Neutral Count: 384, Neutral Percentage: 40.51% </li>
+<li>humor Pronoun Counts and Percentages: Male Count: 396, Male Percentage: 55.08% Female Count: 156, Female Percentage: 21.70% Neutral Count: 167, Neutral Percentage: 23.23% </li>
+<li>learned Pronoun Counts and Percentages: Male Count: 971, Male Percentage: 47.18% Female Count: 204, Female Percentage: 9.91% Neutral Count: 883, Neutral Percentage: 42.91% </li>
+<li>lore Pronoun Counts and Percentages: Male Count: 1416, Male Percentage: 52.90% Female Count: 632, Female Percentage: 23.61% Neutral Count: 629, Neutral Percentage: 23.50% </li>
+<li>mystery Pronoun Counts and Percentages: Male Count: 2023, Male Percentage: 68.14% Female Count: 672, Female Percentage: 22.63% Neutral Count: 274, Neutral Percentage: 9.23% </li>
+<li>News Pronoun Counts and Percentages: Male Count: 1184, Male Percentage: 65.60% Female Count: 199, Female Percentage: 11.02% Neutral Count: 422, Neutral Percentage: 23.38% </li>
+<li>Religion Pronoun Counts and Percentages: Male Count: 502, Male Percentage: 63.79% Female Count: 22, Female Percentage: 2.80% Neutral Count: 263, Neutral Percentage: 33.42% </li>
+<li>Reviews Pronoun Counts and Percentages: Male Count: 540, Male Percentage: 61.36% Female Count: 145, Female Percentage: 16.48% Neutral Count: 195, Neutral Percentage: 22.16% </li>
+<li>Romance Pronoun Counts and Percentages: Male Count: 2067, Male Percentage: 52.38% Female Count: 1451, Female Percentage: 36.77% Neutral Count: 428, Neutral Percentage: 10.85% \</li>
+<li>Science_fiction Pronoun Counts and Percentages: Male Count: 368, Male Percentage: 59.45% Female Count: 145, Female Percentage: 23.42% Neutral Count: 106, Neutral Percentage: 17.12%</li>
+<li>News Reportage Pronoun Counts and Percentages: Male Count: 530, Male Percentage: 83.86% Female Count: 65, Female Percentage: 10.28% Neutral Count: 37, Neutral Percentage: 5.85% </li>
+<li>Review Pronoun Counts and Percentages: Male Count: 147, Male Percentage: 59.51% Female Count: 3, Female Percentage: 1.21% Neutral Count: 97, Neutral Percentage: 39.27% </li>
+<li>Religion Pronoun Counts and Percentages: Male Count: 141, Male Percentage: 57.09% Female Count: 21, Female Percentage: 8.50% Neutral Count: 85, Neutral Percentage: 34.41% </li>
+<li>Skills Trades and Hobbies Pronoun Counts and Percentages: Male Count: 315, Male Percentage: 48.31% Female Count: 243, Female Percentage: 37.27% Neutral Count: 94, Neutral Percentage: 14.42% </li>
+<li>Lore Pronoun Counts and Percentages: Male Count: 1727, Male Percentage: 70.26% Female Count: 637, Female Percentage: 25.92% Neutral Count: 94, Neutral Percentage: 3.82% </li>
+<li>Humor Pronoun Counts and Percentages: Male Count: 599, Male Percentage: 41.98% Female Count: 796, Female Percentage: 55.78% Neutral Count: 32, Neutral Percentage: 2.24% </li>
+<li>Romantic Fiction Pronoun Counts and Percentages: Male Count: 191, Male Percentage: 31.94% Female Count: 55, Female Percentage: 9.20% Neutral Count: 352, Neutral Percentage: 58.86% Science </li>
+<li>Academic Prose Pronoun Counts and Percentages: Male Count: 114, Male Percentage: 45.60% Female Count: 69, Female Percentage: 27.60% Neutral Count: 67, Neutral Percentage: 26.80% </li>
+<li>General Fiction Pronoun Counts and Percentages: Male Count: 858, Male Percentage: 62.67% Female Count: 426, Female Percentage: 31.12% Neutral Count: 85, Neutral Percentage: 6.21% </li>
+<li>Reports and Official Pronoun Counts and Percentages: Male Count: 5, Male Percentage: 41.67% Female Count: 0, Female Percentage: 0.00% Neutral Count: 7, Neutral Percentage: 58.33%</li>
+</ol>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bs4 <span class="keyword">as</span> bs</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">process_xml</span>(<span class="params">xml_char, xml_pinyin</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        infile_char = <span class="built_in">open</span>(xml_char, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">        contents_char = infile_char.read()</span><br><span class="line">        soup_char = bs.BeautifulSoup(contents_char, <span class="string">&#x27;xml&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        char = [w_tag.text <span class="keyword">for</span> w_tag <span class="keyword">in</span> soup_char.find_all(<span class="string">&#x27;w&#x27;</span>)]</span><br><span class="line">        pos = [w_tag.get(<span class="string">&#x27;POS&#x27;</span>) <span class="keyword">for</span> w_tag <span class="keyword">in</span> soup_char.find_all(<span class="string">&#x27;w&#x27;</span>)]</span><br><span class="line"></span><br><span class="line">        infile_pinyin = <span class="built_in">open</span>(xml_pinyin, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">        contents_pinyin = infile_pinyin.read()</span><br><span class="line">        soup_pinyin = bs.BeautifulSoup(contents_pinyin, <span class="string">&#x27;xml&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        pinyin = [w_tag.text <span class="keyword">for</span> w_tag <span class="keyword">in</span> soup_pinyin.find_all(<span class="string">&#x27;w&#x27;</span>)]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">list</span>(<span class="built_in">zip</span>(char, pinyin, pos))</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Error processing XML: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">analyze_gender_pronouns</span>(<span class="params">category, xml_char, xml_pinyin</span>):</span><br><span class="line">    tokens = process_xml(xml_char, xml_pinyin)</span><br><span class="line"></span><br><span class="line">    male_pronouns = [<span class="string">&quot;他&quot;</span>]</span><br><span class="line">    female_pronouns = [<span class="string">&quot;她&quot;</span>]</span><br><span class="line">    neutral_pronouns = [<span class="string">&quot;它&quot;</span>]</span><br><span class="line"></span><br><span class="line">    male_count = <span class="built_in">sum</span>(<span class="number">1</span> <span class="keyword">for</span> token <span class="keyword">in</span> tokens <span class="keyword">if</span> token[<span class="number">0</span>] <span class="keyword">in</span> male_pronouns)</span><br><span class="line">    female_count = <span class="built_in">sum</span>(<span class="number">1</span> <span class="keyword">for</span> token <span class="keyword">in</span> tokens <span class="keyword">if</span> token[<span class="number">0</span>] <span class="keyword">in</span> female_pronouns)</span><br><span class="line">    neutral_count = <span class="built_in">sum</span>(<span class="number">1</span> <span class="keyword">for</span> token <span class="keyword">in</span> tokens <span class="keyword">if</span> token[<span class="number">0</span>] <span class="keyword">in</span> neutral_pronouns)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算百分比</span></span><br><span class="line">    total_gender_count = male_count + female_count + neutral_count</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 在该种类中的出现次数除以该种类中所有三种性别代词的总出现次数</span></span><br><span class="line">    neutral_percentage = (neutral_count / total_gender_count) * <span class="number">100</span> <span class="keyword">if</span> total_gender_count &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    male_percentage = (male_count / total_gender_count) * <span class="number">100</span> <span class="keyword">if</span> total_gender_count &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    female_percentage = (female_count / total_gender_count) * <span class="number">100</span> <span class="keyword">if</span> total_gender_count &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;category&quot;</span>: category,</span><br><span class="line">        <span class="string">&quot;neutral_count&quot;</span>: neutral_count,</span><br><span class="line">        <span class="string">&quot;male_count&quot;</span>: male_count,</span><br><span class="line">        <span class="string">&quot;female_count&quot;</span>: female_count,</span><br><span class="line">        <span class="string">&quot;neutral_percentage&quot;</span>: neutral_percentage,</span><br><span class="line">        <span class="string">&quot;male_percentage&quot;</span>: male_percentage,</span><br><span class="line">        <span class="string">&quot;female_percentage&quot;</span>: female_percentage,</span><br><span class="line">        <span class="string">&quot;total_count&quot;</span>: total_gender_count</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">plot_gender_distribution</span>(<span class="params">categories_data</span>):</span><br><span class="line">    labels = [data[<span class="string">&quot;category&quot;</span>] <span class="keyword">for</span> data <span class="keyword">in</span> categories_data]</span><br><span class="line">    colors = [<span class="string">&quot;gray&quot;</span>, <span class="string">&quot;blue&quot;</span>, <span class="string">&quot;pink&quot;</span>]</span><br><span class="line"></span><br><span class="line">    neutral_percentages = [data[<span class="string">&quot;neutral_percentage&quot;</span>] <span class="keyword">for</span> data <span class="keyword">in</span> categories_data]</span><br><span class="line">    male_percentages = [data[<span class="string">&quot;male_percentage&quot;</span>] <span class="keyword">for</span> data <span class="keyword">in</span> categories_data]</span><br><span class="line">    female_percentages = [data[<span class="string">&quot;female_percentage&quot;</span>] <span class="keyword">for</span> data <span class="keyword">in</span> categories_data]</span><br><span class="line"></span><br><span class="line">    fig, ax = plt.subplots()</span><br><span class="line"></span><br><span class="line">    bar_width = <span class="number">0.25</span></span><br><span class="line">    opacity = <span class="number">0.7</span></span><br><span class="line"></span><br><span class="line">    index = <span class="built_in">range</span>(<span class="built_in">len</span>(labels))</span><br><span class="line"></span><br><span class="line">    bar1 = ax.bar(index, male_percentages, bar_width, alpha=opacity, color=colors[<span class="number">1</span>], label=<span class="string">&quot;Male&quot;</span>, edgecolor=<span class="string">&#x27;black&#x27;</span>, linewidth=<span class="number">1</span>)</span><br><span class="line">    bar2 = ax.bar(index, female_percentages, bottom=male_percentages, width=bar_width, alpha=opacity, color=colors[<span class="number">2</span>], label=<span class="string">&quot;Female&quot;</span>, edgecolor=<span class="string">&#x27;black&#x27;</span>, linewidth=<span class="number">1</span>)</span><br><span class="line">    bar3 = ax.bar(index, neutral_percentages, bottom=[<span class="built_in">sum</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">zip</span>(male_percentages, female_percentages)], width=bar_width, alpha=opacity, color=colors[<span class="number">0</span>], label=<span class="string">&quot;Gender Neutral&quot;</span>, edgecolor=<span class="string">&#x27;black&#x27;</span>, linewidth=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 添加数据标签</span></span><br><span class="line">    <span class="keyword">for</span> i, data <span class="keyword">in</span> <span class="built_in">enumerate</span>(categories_data):</span><br><span class="line">        total_percentage = <span class="built_in">sum</span>([male_percentages[i], female_percentages[i], neutral_percentages[i]])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 在每个色块中央标记相应性别代词的百分比</span></span><br><span class="line">        ax.text(i, total_percentage / <span class="number">2</span>,</span><br><span class="line">                <span class="string">f&quot;Male: <span class="subst">&#123;data[<span class="string">&#x27;male_percentage&#x27;</span>]:<span class="number">.2</span>f&#125;</span>%\nFemale: <span class="subst">&#123;data[<span class="string">&#x27;female_percentage&#x27;</span>]:<span class="number">.2</span>f&#125;</span>%\nNeutral: <span class="subst">&#123;data[<span class="string">&#x27;neutral_percentage&#x27;</span>]:<span class="number">.2</span>f&#125;</span>%&quot;</span>,</span><br><span class="line">                ha=<span class="string">&#x27;center&#x27;</span>, va=<span class="string">&#x27;center&#x27;</span>, color=<span class="string">&#x27;black&#x27;</span>, fontsize=<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line">    ax.set_xlabel(<span class="string">&quot;Categories&quot;</span>)</span><br><span class="line">    ax.set_ylabel(<span class="string">&quot;Percentage&quot;</span>)</span><br><span class="line">    ax.set_title(<span class="string">&quot;Gender Pronoun Distribution by Context&quot;</span>)</span><br><span class="line">    ax.set_xticks(index)</span><br><span class="line">    ax.set_xticklabels(labels)</span><br><span class="line">    ax.legend()</span><br><span class="line"></span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义文件路径和标签</span></span><br><span class="line">lcmc_char = <span class="string">r&quot;C:\\Users\\PC\\AppData\\Roaming\\nltk_data\\corpora\\LCMC\\2474\\Lcmc\\data\\character\\&quot;</span></span><br><span class="line">lcmc_pinyin = <span class="string">r&quot;C:\\Users\\PC\\AppData\\Roaming\\nltk_data\\corpora\\LCMC\\2474\\Lcmc\\data\\pinyin\\&quot;</span></span><br><span class="line"></span><br><span class="line">categories = [</span><br><span class="line">    (<span class="string">&quot;News Reportage&quot;</span>, <span class="string">&quot;LCMC_A.xml&quot;</span>),</span><br><span class="line">    (<span class="string">&quot;Review&quot;</span>, <span class="string">&quot;LCMC_D.xml&quot;</span>),</span><br><span class="line">    (<span class="string">&quot;Religion&quot;</span>, <span class="string">&quot;LCMC_E.xml&quot;</span>),</span><br><span class="line">    (<span class="string">&quot;Skills Trades and Hobbies&quot;</span>, <span class="string">&quot;LCMC_F.xml&quot;</span>),</span><br><span class="line">    (<span class="string">&quot;Lore&quot;</span>, <span class="string">&quot;LCMC_G.xml&quot;</span>),</span><br><span class="line">    (<span class="string">&quot;Humor&quot;</span>, <span class="string">&quot;LCMC_P.xml&quot;</span>),</span><br><span class="line">    (<span class="string">&quot;Romantic Fiction&quot;</span>, <span class="string">&quot;LCMC_J.xml&quot;</span>),</span><br><span class="line">    (<span class="string">&quot;Science Academic Prose&quot;</span>, <span class="string">&quot;LCMC_M.xml&quot;</span>),</span><br><span class="line">    (<span class="string">&quot;General Fiction&quot;</span>, <span class="string">&quot;LCMC_K.xml&quot;</span>),  <span class="comment"># Updated category</span></span><br><span class="line">    (<span class="string">&quot;Reports and Official&quot;</span>, <span class="string">&quot;LCMC_H.xml&quot;</span>)</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">categories_data = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> category_label, category_file <span class="keyword">in</span> categories:</span><br><span class="line">    xml_char = lcmc_char + category_file</span><br><span class="line">    xml_pinyin = lcmc_pinyin + category_file</span><br><span class="line"></span><br><span class="line">    data = analyze_gender_pronouns(category_label, xml_char, xml_pinyin)</span><br><span class="line">    categories_data.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;\n<span class="subst">&#123;category_label&#125;</span> Pronoun Counts and Percentages:&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Male Count: <span class="subst">&#123;data[<span class="string">&#x27;male_count&#x27;</span>]&#125;</span>, Male Percentage: <span class="subst">&#123;data[<span class="string">&#x27;male_percentage&#x27;</span>]:<span class="number">.2</span>f&#125;</span>%&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Female Count: <span class="subst">&#123;data[<span class="string">&#x27;female_count&#x27;</span>]&#125;</span>, Female Percentage: <span class="subst">&#123;data[<span class="string">&#x27;female_percentage&#x27;</span>]:<span class="number">.2</span>f&#125;</span>%&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Neutral Count: <span class="subst">&#123;data[<span class="string">&#x27;neutral_count&#x27;</span>]&#125;</span>, Neutral Percentage: <span class="subst">&#123;data[<span class="string">&#x27;neutral_percentage&#x27;</span>]:<span class="number">.2</span>f&#125;</span>%&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成柱状图</span></span><br><span class="line">plot_gender_distribution(categories_data)</span><br></pre></td></tr></table></figure>
+
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2023/10/14/Distributed-and-frequency-of-gendered-pronouns/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Linguistics-Statistics/">
+                    Linguistics, Statistics
+                </a>
+            </div>
+            <h5>
+                <a href="/2023/10/14/Distributed-and-frequency-of-gendered-pronouns/" class="trm-anima-link">
+                    Distribution and Frequency of Gendered Pronouns in nltk brown corpus using Spacy Language Models
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>23/10/14</li>
+                <li>22:47</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2023/10/14/Selected-Demonstration-of-My-Poem-Translations/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Linguistics-Translation/">
+                    Linguistics, Translation
+                </a>
+            </div>
+            <h5>
+                <a href="/2023/10/14/Selected-Demonstration-of-My-Poem-Translations/" class="trm-anima-link">
+                    Selected Demonstration of My Literature Translations
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>23/10/14</li>
+                <li>22:47</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v6.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.4
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+ 
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.4"></script>
+
+</body>
+
+</html>
